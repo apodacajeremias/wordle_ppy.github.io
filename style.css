@@ -1,84 +1,91 @@
 body {
-font-family: Arial, sans-serif;
+  font-family: Arial, sans-serif;
+  background-image: url("bg.jpeg");
+  
+  
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
-text-align: center;
-    margin-top: 50px;
-animation: fadeIn 400ms;
+  text-align: center;
+  margin-top: 50px;
+  animation: fadeIn 800ms;
+  color: white
 }
 
 p {
-    text-align: center;
-    animation: fadeIn 600ms;
+  text-align: center;
+  animation: fadeIn 1200ms;
+  color: white
 }
 
 #guess-input {
-display: block;
-    margin: 0 auto 20px;
-    border-radius: 16px;
-    padding: 10px;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 16px;
+  padding: 10px;
 
-font-size: 18px;
-    width: 250px;
-    border: 1px solid #ccc;
+  font-size: 18px;
+  width: 250px;
+  border: 1px solid #ccc;
 }
 
 #guess-button {
-display: block;
-    margin: 0 auto;
-    padding: 10px 20px;
-    font-size: 18px;
-background-color: #0cbaba;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #0cbaba;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
 }
 
 #grid {
-    background-color: lightblue;
-    padding: 16px;
-    width: max-content;
-    border-radius: 8px;
-    margin-top: 16px;
-    margin-left: auto;
-    margin-right: auto;
+  background-color: aqua;
+  padding: 16px;
+  width: max-content;
+  border-radius: 8px;
+  margin-top: 16px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #grid:empty {
-    background-color: transparent;
+  background-color: transparent;
 }
 button:active {
-transform: scale(0.95);
+  transform: scale(0.95);
 }
 
 .letter {
-border: 1px solid transparent;
-    padding: 4px;
-    margin: 4px;
-    min-width: 36px;
-    text-align: center;
-    display: inline-block;
-    border-radius: 4px;
-    font-size: 28px;
-animation: fadeIn 300ms;
+  border: 1px solid transparent;
+  padding: 4px;
+  margin: 4px;
+  min-width: 36px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 28px;
+  animation: fadeIn 600ms;
 }
 
 .row {
-margin-bottom: 3px;
-    text-align: center;
+  margin-bottom: 3px;
+  text-align: center;
 }
 
 .input-area {
-margin: 30px;
+  margin: 30px;
 }
 
 @keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }

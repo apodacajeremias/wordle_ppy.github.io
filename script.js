@@ -65,18 +65,19 @@ const BOTON = document.getElementById("guess-button");
 const AVISO = document.getElementById("guesses");
 const GRILLA = document.getElementById("grid");
 
-
 buscarPalabra();
 botonIntentar();
 
 BOTON.addEventListener("click", () => {
     if (!tieneVidas) {
         reintentar();
+        return;
     }
     const INTENTO = leerIntento();
     if (palabra === INTENTO) {
         verificar(palabra, INTENTO);
         terminar("Ganaste!");
+        tieneVidas = 0;
         return;
     }
     if (INTENTO.length <= 0) {
@@ -87,17 +88,25 @@ BOTON.addEventListener("click", () => {
     verificar(palabra, INTENTO);
 });
 
-INPUT.oninput = function () {
+INPUT.addEventListener("input", function() {
+    const lettersOnly = /^[a-zA-Z]+$/;
+
     if (this.value.trim().length > 5) {
         this.value = this.value.trim().slice(0, 5);
     }
-}
+    if (!lettersOnly.test(this.value)) {
+        this.value = this.value.replace(/[^a-zA-Z]/g, '');
+    }
+
+
+});
 
 function buscarPalabra() {
     fetch("https://random-word-api.herokuapp.com/word?length=5&lang=es")
         .then(response => response.json())
         .then(response => {
             palabra = response[0].toUpperCase();
+            console.log(palabra);
         })
         .catch(err => {
             palabra = palabraAleatoria();
@@ -124,7 +133,7 @@ function leerIntento() {
 function verificar(palabra, intento) {
     console.log("Verificando:", intento);
     if (intento.length != 5) {
-        alert("La palabra debe tener 5 caracteres");
+        avisar("La palabra debe tener 5 caracteres");
         return;
     }
     const row = document.createElement("div");
@@ -169,7 +178,8 @@ function avisar(msg) {
     AVISO.innerHTML = "<h1>" + msg + "</h1>";
     setTimeout(() => {
         AVISO.innerHTML = "";
-    }, 30000);
+    }, 15000);
+    desplazarAlFinal();
 }
 
 function limpiar() {
@@ -189,4 +199,8 @@ function botonIntentar() {
 function botonReintentar() {
     BOTON.style.backgroundColor = V;
     BOTON.innerHTML = "Reintentar";
+}
+
+function desplazarAlFinal(){
+    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
 }
